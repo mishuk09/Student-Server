@@ -4,7 +4,7 @@ const app = express();
 const todos = require('./todos/todos');
 const std = require('./todos/Student');
 app.use(express.json());
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 app.use('/todos', todos);
 app.use('/student', std);
