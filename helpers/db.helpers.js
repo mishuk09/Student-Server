@@ -2,7 +2,7 @@ const { MYSQL_DB_CONFIG } = require("../config/db.config");
 
 const mysql = require("mysql2/promise");
 
-const { Sequeilize } = require("sequelize");
+const { Sequelize } = require("sequelize");
 
 module.exports = db = {};
 
@@ -18,9 +18,9 @@ async function initialize() {
 
 
     await connection.query(`Create Database if not exists\`${DB}\`;`);
-    const sequelize = new Sequeilize(DB, USER, PASSWORD, {
+    const sequelize = new Sequelize(DB, USER, PASSWORD, {
         dialect: "mysql",
-        host: host,
+        host: HOST,
     });
 
     db.Student = require("../student/student.model")(sequelize);

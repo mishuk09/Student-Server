@@ -1,14 +1,9 @@
-const express = require('express');
-const fs = require('fs').promises; // Using promises version of fs for async/await support
+const express = require("express");
+const students = require('./student/student.routes');
 const app = express();
-const todos = require('./todos/todos');
-const std = require('./todos/Student');
-app.use(express.json());
-const port = process.env.PORT || 5001;
+const port = process.env.port || 5001;
 
-app.use('/todos', todos);
-app.use('/student', std);
-
-app.listen(port, () => {
-    console.log("server listen port:", port);
-});
+app.use(express.json)
+app.use('/students',students)
+app.get("/", (req, res) => res.send("Hello World!"));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -1,7 +1,6 @@
-const { response } = require("express");
-const attribute_service = require("../attribute/attribute.service");
+const student_service = require("../student/student.service");
 exports.create = (req, res, next) => {
-  attribute_service
+  student_service
     .create(req.body)
     .then((response) =>
       res.status(200).send({
@@ -12,7 +11,7 @@ exports.create = (req, res, next) => {
     .catch(next);
 };
 exports.findAll = (req, res, next) => {
-  attribute_service
+  student_service
     .getAll()
     .then((response) =>
       res.status(200).send({
@@ -23,7 +22,7 @@ exports.findAll = (req, res, next) => {
     .catch(next);
 };
 exports.findOne = (req, res, next) => {
-  attribute_service.getById(req.params.id, (error, response) => {
+  student_service.getById(req.params.id, (error, response) => {
     if (error) {
       return next(error);
     } else {
@@ -35,7 +34,7 @@ exports.findOne = (req, res, next) => {
   });
 };
 exports.update = (req, res, next) => {
-  attribute_service
+  student_service
     .update(req.params.id, req.body)
     .then((response) =>
       res.status(200).send({
@@ -46,7 +45,7 @@ exports.update = (req, res, next) => {
     .catch(next);
 };
 exports.delete = (req, res, next) => {
-  attribute_service
+  student_service
     .changeStatus(req.params.id)
     .then((response) =>
       res.status(200).send({ message: "Success", data: response })
@@ -54,7 +53,7 @@ exports.delete = (req, res, next) => {
     .catch(next);
 };
 exports.search = (req, res, next) => {
-  attribute_service
+  student_service
     .searchByKeyword(req.params.keyword)
     .then((response) =>
       res.status(200).send({
@@ -66,7 +65,7 @@ exports.search = (req, res, next) => {
 };
 
 exports.del = (req, res, next) => {
-  attribute_service
+  student_service
     .del(req.params.id)
     .then((response) =>
       res.status(200).send({ message: "Success", data: response })
